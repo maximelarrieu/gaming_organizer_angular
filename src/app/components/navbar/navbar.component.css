@@ -1,0 +1,23 @@
+.nav-custom {
+  background: #3d405b;
+  box-shadow: 1px 1px 70px 1px black;
+}
+
+.nav-custom a {
+  color: #f4f1de;
+  font-weight: bold;
+}
+
+.nav-custom a:hover {
+  color: #f2cc8f;
+  font-weight: bold;
+}
+
+.dropdown-menu {
+  background-color: #3d405b;
+}
+
+.dropdown-menu a:hover {
+  background-color: #35384f;
+  color: #f2cc8f;
+}

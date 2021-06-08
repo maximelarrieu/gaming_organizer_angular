@@ -1,0 +1,18 @@
+<p>games works!</p>
+
+<div class="row">
+  <div class="col col-12 col-sm-12 col-md-12 col-lg-4" *ngFor="let game of games">
+    <div class="card mb-4" gamesBorderCard>
+      <a href="games/{{game._id}}">
+      <img class="card-img-top" style="max-height: 150px" src="{{game.image}}" alt="Card image cap">
+      </a>
+        <div class="card-body">
+        <h5 class="card-title text-capitalize">{{game.title}}</h5>
+        <p class="card-text">{{game.description}}</p>
+      </div>
+      <div class="btn-group">
+        <a type="button" class="btn btn-success" (click)="addGameToUser(user.id, game._id)"><i class="pi pi-plus"></i>Ajouter à la liste</a>
+      </div>
+    </div>
+  </div>
+</div>

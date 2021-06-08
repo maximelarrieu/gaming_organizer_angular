@@ -1,0 +1,9 @@
+.card {
+  background-color: #3d405b;
+  box-shadow: 1px 1px 10px 1px black;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

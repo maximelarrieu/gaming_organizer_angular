@@ -1,0 +1,21 @@
+.custom-btn {
+  background-color: #81b29a;
+}
+
+label {
+  color: #f2cc8f
+}
+
+.pi {
+  margin-right: 1%
+}
+
+input {
+  background-color: #3d405b;
+  color: #f4f1de
+}
+
+input:focus {
+  background-color: #35384f;
+  color: #f4f1de
+}
