@@ -1,0 +1,87 @@
+label {
+  color: #f2cc8f
+}
+
+input, textarea {
+  background-color: #3d405b;
+  color: #f4f1de
+}
+
+input:focus, textarea:focus {
+  background-color: #35384f;
+  color: #f4f1de
+}
+
+.btn-success {
+  background-color: #81b29a;
+  color: black;
+}
+
+.msg {
+  float: left;
+  width:100%;
+}
+
+.my-msg {
+  text-align: right;
+  width: 100%;
+}
+.alert {
+  width: 60%;
+}
+.alert-success {
+  margin-left: auto;
+  margin-right: 0
+}
+.my-label {
+  display: block;
+}
+
+.container {
+  overflow-y: scroll;
+  height: 650px;
+  scrollbar-color: #35384f #3d405b;
+  scrollbar-width: thin;
+  display:flex;
+  flex-direction:column-reverse;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+  display: block;
+  height: 10px;
+}
+
+::-webkit-scrollbar-button:vertical:increment {
+  background-color: #3d405b;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: #3d405b;
+  -webkit-border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  height: 50px;
+  background-color: #35384f;
+  -webkit-border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  width: 50px;
+  background-color: #ccc;
+  -webkit-border-radius: 3px;
+}
+
+@media only screen and (max-width: 767px) {
+  /* smartphone */
+  .container {
+    overflow-y: scroll;
+    height: 400px
+  }
+}

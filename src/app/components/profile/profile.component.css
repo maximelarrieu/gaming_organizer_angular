@@ -1,0 +1,48 @@
+strong {
+  color: #F2CC8F
+}
+
+.update-btn {
+  background-color: #F2CC8F;
+  margin-right: 10px
+}
+.update-btn:hover {
+  background-color: #e4bd7e;
+  color: #f4f1de
+}
+
+.delete-btn {
+  background-color: #E07A5F;
+}
+.delete-btn:hover {
+  background-color: #c76c54;
+  color: #f4f1de
+}
+
+i {
+  margin-right: 10px;
+}
+
+p-messages .color {
+  background-color: black;
+  color: black
+}
+
+.alert-success {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #81b29a;
+  text-align: center;
+}
+
+.card {
+  background-color: #3d405b;
+  box-shadow: 1px 1px 10px 1px black;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+

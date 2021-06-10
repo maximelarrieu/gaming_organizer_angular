@@ -19,3 +19,10 @@ input:focus {
   background-color: #35384f;
   color: #f4f1de
 }
+.alert-warning {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f2cc8f;
+  text-align: center;
+}

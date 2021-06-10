@@ -7,6 +7,8 @@ import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.
 import {RegisterComponent} from "./components/register/register.component";
 import {LoginComponent} from "./components/login/login.component";
 import {ProfileComponent} from "./components/profile/profile.component";
+import {UserComponent} from "./components/user/user.component";
+import {MessageComponent} from "./components/message/message.component";
 
 const routes: Routes = [
   { path: '', component: MainComponent},
@@ -15,6 +17,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'games', component: GamesComponent},
   { path: 'games/:id', component: GameDetailsComponent},
+  { path: 'users/:id', component: UserComponent},
+  { path: 'messages', component: MessageComponent},
   { path: '**', component: PageNotFoundComponent}
 ];
 

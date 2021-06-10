@@ -1,4 +1,4 @@
-const gameController = require("../controllers/game.controller")
+const messageController = require("../controllers/message.controller")
 
 const bodyParser = require("body-parser")
 const methodOverride = require("method-override")
@@ -20,11 +20,8 @@ module.exports = app => {
     next();
   })
 
-  router.get("/", gameController.findAll)
-  router.get("/:id", gameController.findOne)
-  router.post("/", jsonParser, urlEncodedParser, gameController.create)
-  router.post("/:game_id/add/to/:user_id", jsonParser, urlEncodedParser, gameController.addGameToUser)
-  router.put("/:game_id/add/to/:user_id", jsonParser, urlEncodedParser, gameController.removeGameToUser)
+  router.get("/messages", jsonParser, urlEncodedParser, messageController.findAll)
+  router.post("/messages", jsonParser, urlEncodedParser, messageController.create)
 
-  app.use("/api/games", router)
+  app.use("/api", router)
 }

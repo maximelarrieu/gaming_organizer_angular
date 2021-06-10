@@ -1,4 +1,4 @@
-<p>games works!</p>
+<div class="alert alert-success" *ngIf="added">Le jeu a été ajouté à votre liste !</div>
 
 <div class="row">
   <div class="col col-12 col-sm-12 col-md-12 col-lg-4" *ngFor="let game of games">
@@ -11,7 +11,10 @@
         <p class="card-text">{{game.description}}</p>
       </div>
       <div class="btn-group">
-        <a type="button" class="btn btn-success" (click)="addGameToUser(user.id, game._id)"><i class="pi pi-plus"></i>Ajouter à la liste</a>
+        <a  type="button" class="btn btn-success" (click)="addGameToUser(game, user._id)"><i class="pi pi-plus"></i>Ajouter à la liste</a>
+      </div>
+      <div class="btn-group">
+        <a  type="button" class="btn btn-success"><i class="pi pi-check"></i>Dans votre liste !</a>
       </div>
     </div>
   </div>

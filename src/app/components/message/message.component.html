@@ -1,0 +1,43 @@
+<h3>Messages</h3>
+<div class="container scroller mt-3" id="scroller">
+  <div class="msg">
+    <div class="user-msg" *ngFor="let message of messages">
+      <ng-container *ngIf="currentUser.username !== message.sender.username">
+        <label>{{message.sender.username}}</label>
+        <div class="alert alert-light">{{message.message}}</div>
+      </ng-container>
+    </div>
+    <div class="my-msg" *ngFor="let message of messages">
+      <ng-container *ngIf="currentUser.username === message.sender.username">
+        <label class="my-label">{{message.sender.username}}</label>
+        <div class="alert alert-success">{{message.message}}</div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<form class="form" id="form" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+  <textarea
+    id="message"
+    name="message"
+    class="form-control mt-3"
+    placeholder="Votre message..."
+    [(ngModel)]="form.message"
+    required
+    #message="ngModel"
+  >
+</textarea>
+  <button id="send" class="btn btn-success mt-2">Envoyer</button>
+</form>
+
+<script>
+  (function() {
+    let socket = io();
+    $("form").submit(function(e) {
+      e.preventDefault(); // prevents page reloading
+      socket.emit("chat message", $("#message").val());
+      $("#message").val("");
+      return  true;
+    });
+  })();
+</script>

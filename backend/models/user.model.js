@@ -20,18 +20,18 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     required: false
   },
+  games: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Game'
+    }
+  ],
   roles: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Role'
     }
   ],
-  games: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Game'
-    }
-  ]
 })
 
 const GameModel = mongoose.model('User', UserSchema)

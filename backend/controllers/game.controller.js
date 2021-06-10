@@ -23,14 +23,15 @@ const create = async(req, res) => {
 }
 
 const addGameToUser = async(req, res) => {
-  const game = req.body
-  const newGame = new Game(game)
-  await User.updateMany({'_id': newGame.users}, {$push: {games: newGame._id}})
+  return User.findByIdAndUpdate(req.params.user_id, {$push: {games: req.params.game_id}});
+}
 
-  return res.send(newGame)
+const removeGameToUser = async(req, res) => {
+  return User.findByIdAndUpdate(req.params.user_id, {$pull: {games: req.params.game_id}})
 }
 
 exports.findAll = findAll
 exports.findOne = findOne
 exports.create = create
 exports.addGameToUser = addGameToUser
+exports.removeGameToUser = removeGameToUser

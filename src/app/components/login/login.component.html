@@ -1,3 +1,5 @@
+<div class="alert alert-warning" *ngIf="logoutMessage.length > 0">{{logoutMessage}}</div>
+
 <div class="col-md-12">
     <form
       *ngIf="!isLoggedIn"
@@ -6,7 +8,7 @@
       #f="ngForm"
       novalidate
     >
-      <p-message severity="warn" text="Echec d'inscription - {{errorMessage}}" styleClass="p-mr-2" *ngIf="f.submitted && isLoginFailed"></p-message>
+      <p-message severity="warn" text="Echec de connexion - {{errorMessage}}" styleClass="p-mr-2" *ngIf="f.submitted && isLoginFailed"></p-message>
 
       <div class="form-group">
         <label for="username">Nom d'utilisateur</label>

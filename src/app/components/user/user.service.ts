@@ -22,4 +22,8 @@ export class UserService {
   getAdminContent(): Observable<any> {
     return this.http.get(`${baseUrl}/admin`, {responseType: 'text'})
   }
+
+  getOne(id: any): Observable<any> {
+    return this.http.get(`${baseUrl}/${id}`)
+  }
 }

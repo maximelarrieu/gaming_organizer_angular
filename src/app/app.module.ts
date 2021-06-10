@@ -24,6 +24,8 @@ import {MessageModule} from "primeng/message";
 import {MessagesModule} from "primeng/messages";
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { MessageComponent } from './components/message/message.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     UserComponent,
     RegisterComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserDetailsComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

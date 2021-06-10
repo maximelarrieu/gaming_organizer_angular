@@ -1,17 +1,24 @@
-const http = require('http')
 const PORT = 3001
 const express = require('express')
 const logger = require('morgan')
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
+mongoose.Promise  = require("bluebird");
 const dbConfig = require("./config/db.config");
 const {HttpHeaders} = require("@angular/common/http");
+let app = require('express')();
+let http = require('http').Server(app);
+let io = require('socket.io')(http, {
+  cors: {
+    origin: "http://localhost:4200",
+    methods: ["GET", "POST"]
+  }
+});
 
 const db = require("./models/")
 const Role = db.role;
 
-const app = express()
-new HttpHeaders().set('access-control-allow-origin', "http://localhost:3001/api/ga")
+new HttpHeaders().set('access-control-allow-origin', "http://localhost:3001")
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', '*');
@@ -35,14 +42,30 @@ mongoose.connect(dbConfig.url, {
 require("./routers/game.route")(app)
 require("./routers/auth.route")(app)
 require("./routers/user.route")(app)
+require("./routers/message.route")(app)
 
-app.get("/", function(req, res) {
-  console.log("BONSOIR")
-})
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
 
-http.createServer(app).listen(PORT);
+io.on('connection', (socket) => {
+  console.log('a user connected');
+  socket.on('disconnect', () => {
+    console.log("disconnected")
+  })
+  io.to(socket).emit()
+  socket.on("message", (msg) => {
+    console.log(`message : ${msg}`)
+    socket.emit("message", {message: msg})
 
-console.log(`Port listen on : ${PORT}`);
+    let chatMessage = new Chat({message: msg, sender: "Anonymous"})
+    chatMessage.save()
+  })
+});
+
+http.listen(PORT, () => {
+  console.log('listening on : *:' + PORT );
+});
 
 function initial() {
   Role.estimatedDocumentCount((err, count) => {
@@ -75,3 +98,50 @@ function initial() {
     }
   })
 }
+
+/*(function() {
+  fetch("/message")
+    .then(data  =>  {
+      return  data.json();
+    })
+    .then(json  =>  {
+      json.map(data  =>  {
+        let  li  =  document.createElement("li");
+        let messages = document.getElementById("messages")
+        let  span  =  document.createElement("span");
+        messages.appendChild(li).append(data.message);
+
+        messages
+          .appendChild(span)
+          .append("by "  +  data.sender);
+      });
+    });
+})();*/
+
+/*(function() {
+  $("form").submit(function(e) {
+    let  li  =  document.createElement("li");
+    e.preventDefault(); // prevents page reloading
+    socket.emit("chat message", $("#message").val());
+    messages.appendChild(li).append($("#message").val());
+    let  span  =  document.createElement("span");
+    messages.appendChild(span).append("by "  +  "Anonymous"  +  ": "  +  "just now");
+    $("#message").val("");
+    return  false;
+
+  });
+})();
+
+(function(){
+  socket.on("received", data  =>  {
+    let  li  =  document.createElement("li");
+    let  span  =  document.createElement("span");
+    var  messages  =  document.getElementById("messages");
+    messages.appendChild(li).append(data.message);
+    messages.appendChild(span).append("by "  +  "anonymous"  +  ": "  +  "just now");
+  });
+})
+
+
+
+*/

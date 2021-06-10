@@ -1,0 +1,13 @@
+.btn {
+  background-color: #81b29a;
+}
+
+.btn:hover {
+  background-color: #69937E;
+  color: #f4f1de;
+}
+
+i {
+  margin-right: 10px;
+}
+
