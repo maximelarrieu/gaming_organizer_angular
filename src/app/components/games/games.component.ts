@@ -12,12 +12,11 @@ import { UserService } from "../user/user.service";
 export class GamesComponent implements OnInit {
 
   games: any
-  user_games: any
   isLoggedIn = false;
   connected_user: any
   user: any
-  check = false
   added = false
+  removed = false
 
   constructor(
     private gameService: GamesService,
@@ -33,7 +32,6 @@ export class GamesComponent implements OnInit {
       this.connected_user = this.token.getUser()
       console.log(this.connected_user)
     }
-    this.getUserGames()
   }
 
   getGames(): void {
@@ -61,42 +59,30 @@ export class GamesComponent implements OnInit {
       )
       this.added = true
   }
-
-  getUserGames(): void {
-    this.userService.getOne(this.connected_user.id)
+  addUserToGame(user_id: any, game_id: any): void {
+    this.userService.addUserToGame(user_id, game_id)
       .subscribe(
         data => {
           console.log(data)
-          this.user = data
-          this.user_games = data.games
         },
-        error => {
-          console.log(error)
+        err => {
+          console.log(err)
         }
       )
+    this.added = true
   }
 
-  // @ts-ignore
-/*  checkTest(): boolean {
-    // Loop for array1
-    for(let i = 0; i < this.user.games.length; i++) {
-      // Loop for array2
-      for(let j = 0; j < this.games.length; j++) {
-        // Compare the element of each and
-        // every element from both of the
-        // arrays
-        if(this.user.games[i] === this.games[j]) {
-          // Return if common element found
-          console.log(this.user.games[i] === this.games[j])
-          this.check = true;
-          console.log(this.check)
+  removeGameToUser(game_id: any, user_id: any): void {
+    this.gameService.removeOneToUser(game_id._id, user_id)
+      .subscribe(
+        data => {
+          console.log(data)
+        },
+        err => {
+          console.log(err)
         }
-      }
-    }
+      )
+    this.removed = true
+  }
 
-    // Return if no common element exist
-    this.check = false
-    console.log(this.check)
-
-  }*/
 }

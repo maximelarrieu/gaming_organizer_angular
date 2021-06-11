@@ -8,5 +8,5 @@ const RoleSchema = new mongoose.Schema({
   }
 })
 
-const GameModel = mongoose.model('Role', RoleSchema)
-module.exports = GameModel
+const RoleModel = mongoose.model('Role', RoleSchema)
+module.exports = RoleModel

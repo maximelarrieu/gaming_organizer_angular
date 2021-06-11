@@ -9,6 +9,7 @@ db.user = require("./user.model");
 db.role = require("./role.model");
 db.game = require("./game.model");
 db.game = require("./message.model");
+db.game = require("./event.model");
 
 db.ROLES = ["user", "admin", "moderator"];
 

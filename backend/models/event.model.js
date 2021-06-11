@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const GameSchema = new mongoose.Schema({
+const EventSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -11,28 +11,30 @@ const GameSchema = new mongoose.Schema({
     required: true,
     lowercase: false
   },
-  image: {
-    type: String,
+  nbPlayers: {
+    type: Number,
     required: true,
     lowercase: false
   },
-  releaseAt: {
+  startedAt: {
     type: Date,
     required: false
   },
-  events: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Event'
-    }
-  ],
+  organizer: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  game: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Game'
+  },
   users: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
     }
-  ]
+  ],
 })
 
-const GameModel = mongoose.model('Game', GameSchema)
-module.exports = GameModel
+const EventModel = mongoose.model('Event', EventSchema)
+module.exports = EventModel

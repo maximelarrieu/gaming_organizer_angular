@@ -32,7 +32,13 @@ const UserSchema = new mongoose.Schema({
       ref: 'Role'
     }
   ],
+  events: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Event'
+    }
+  ]
 })
 
-const GameModel = mongoose.model('User', UserSchema)
-module.exports = GameModel
+const UserModel = mongoose.model('User', UserSchema)
+module.exports = UserModel

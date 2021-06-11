@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from "../../services/token.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -10,13 +11,19 @@ export class NavbarComponent implements OnInit {
   private roles: string[] = []
   isLoggedIn = false;
   username?: string;
+  isLogout = false;
+  message = ''
 
-  constructor(private token: TokenService) {}
+  constructor(
+    private token: TokenService,
+    private router: Router,
+  ) {}
   public title: string = "Gaming Organizer"
 
-  ngOnInit(): void {
-    this.isLoggedIn = !this.token.getToken()
+  ngOnInit(): void { }
 
+  ngDoCheck() {
+    this.isLoggedIn = !this.token.getToken()
     if (!this.isLoggedIn) {
       const user = this.token.getUser()
       this.roles = user.roles
@@ -26,6 +33,7 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     this.token.logout()
-    window.location.reload()
+    this.isLogout = true
+    this.router.navigate(['login'], {queryParams: {isLogout: true}}).then(r => console.log(r))
   }
 }

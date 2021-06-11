@@ -14,5 +14,5 @@ const MessageSchema = new mongoose.Schema({
   }
 })
 
-const GameModel = mongoose.model('Message', MessageSchema)
-module.exports = GameModel
+const MessageModel = mongoose.model('Message', MessageSchema)
+module.exports = MessageModel

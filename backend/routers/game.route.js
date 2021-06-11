@@ -24,7 +24,7 @@ module.exports = app => {
   router.get("/:id", gameController.findOne)
   router.post("/", jsonParser, urlEncodedParser, gameController.create)
   router.post("/:game_id/add/to/:user_id", jsonParser, urlEncodedParser, gameController.addGameToUser)
-  router.put("/:game_id/add/to/:user_id", jsonParser, urlEncodedParser, gameController.removeGameToUser)
+  router.patch("/:game_id/remove/to/:user_id", jsonParser, urlEncodedParser, gameController.removeGameToUser)
 
   app.use("/api/games", router)
 }

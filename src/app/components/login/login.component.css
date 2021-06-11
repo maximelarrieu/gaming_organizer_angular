@@ -26,3 +26,13 @@ input:focus {
   background-color: #f2cc8f;
   text-align: center;
 }
+
+h6 a {
+  font-weight: bold;
+  color: #f4f1de;
+  text-decoration: none
+}
+
+h6 a:hover {
+  color: #e4bd7e;
+}

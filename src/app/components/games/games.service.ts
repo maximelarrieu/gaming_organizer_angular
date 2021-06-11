@@ -24,9 +24,14 @@ export class GamesService {
   }
 
   addOneToUser(game_id: any, user_id: any): Observable<any> {
-    console.log("GAAAAAAAAAAAME " + game_id)
-    console.log("USEEEEEEEEEEER " + user_id)
     return this.http.post(`${baseUrl}/${game_id._id}/add/to/${user_id}`, {
+      game_id,
+      user_id
+    }, httpOptions)
+  }
+
+  removeOneToUser(game_id: any, user_id: any): Observable<any> {
+    return this.http.patch(`${baseUrl}/${game_id}/remove/to/${user_id}`, {
       game_id,
       user_id
     }, httpOptions)

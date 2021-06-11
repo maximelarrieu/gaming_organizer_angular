@@ -1,8 +1,8 @@
-.btn {
+.btn-success{
   background-color: #81b29a;
 }
 
-.btn:hover {
+.btn-success:hover {
   background-color: #69937E;
   color: #f4f1de;
 }
@@ -11,3 +11,10 @@ i {
   margin-right: 10px;
 }
 
+.btn-danger {
+  background-color: #E07A5F;
+}
+
+.btn-danger:hover {
+  background-color: #bc654e;
+}

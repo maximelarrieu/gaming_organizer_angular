@@ -22,6 +22,8 @@ module.exports = function(app) {
   router.get("/user", [authJwt.verifyToken], controller.userAccess)
   router.get("/admin", [authJwt.verifyToken, authJwt.isAdmin], controller.adminAccess)
   router.get("/:id", jsonParser, urlEncodedParser, controller.findOne)
+  router.post("/:user_id/add/to/:game_id", jsonParser, urlEncodedParser, controller.addUserToGame)
+  router.patch("/:user_id/remove/to/:game_id", jsonParser, urlEncodedParser, controller.removeUserToGame)
 
   app.use("/api/users", router)
 

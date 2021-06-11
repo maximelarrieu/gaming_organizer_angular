@@ -3,15 +3,28 @@
   box-shadow: 1px 1px 10px 1px black;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
 .alert-success {
   width: 70%;
   margin-left: auto;
   margin-right: auto;
   background-color: #81b29a;
   text-align: center;
+}
+
+.btn-success {
+  background-color: #81b29a;
+  border: 1px #69937E solid;
+}
+
+.btn-success:hover {
+  background-color: #69937E;
+}
+
+.btn-danger {
+  background-color: #E07A5F;
+  border: 1px #c76c54 solid
+}
+
+.btn-danger:hover {
+  background-color: #c76c54;
 }
